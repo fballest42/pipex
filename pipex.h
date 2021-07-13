@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 10:01:14 by fballest          #+#    #+#             */
-/*   Updated: 2021/07/12 10:21:44 by fballest         ###   ########.fr       */
+/*   Updated: 2021/07/13 16:10:13 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,20 @@ typedef struct s_pipex
 {
 	int		x;
 	int		y;
-	int		z;
+	char	*filein;
+	char	*fileout;
 }				t_pipex;
+
+/*
+**FILES AND FUNTIONS
+*/
+/*
+**PIPEXMAIN
+*/
+
+/*
+**UTILS.C
+*/
+void	ft_printerror(char *str, int error, t_pipex *pipex);
 
 #endif
