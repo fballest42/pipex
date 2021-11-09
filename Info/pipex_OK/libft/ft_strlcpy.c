@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
+/*   By: milmi <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/27 13:16:41 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/04 11:07:24 by fballest         ###   ########.fr       */
+/*   Created: 2019/11/09 15:11:16 by milmi             #+#    #+#             */
+/*   Updated: 2019/11/09 15:11:19 by milmi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	t_list		*new;
+	int		j;
+	size_t	i;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
+	j = 0;
+	i = 0;
+	if (dest == NULL || src == NULL)
 		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	while (src[j] != '\0')
+		j++;
+	while (src[i] != '\0' && i + 1 < size)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	if (size > i)
+		dest[i] = '\0';
+	return (j);
 }

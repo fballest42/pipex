@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_matrixlines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 13:53:36 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/04 11:05:21 by fballest         ###   ########.fr       */
+/*   Created: 2021/11/05 09:51:41 by fballest          #+#    #+#             */
+/*   Updated: 2021/11/09 23:03:51 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int     ft_matrixlines(char **str)
 {
-	t_list		*cont;
-
-	cont = lst;
-	if (!lst)
-		return (0);
-	while (cont->next)
-	{
-		cont = cont->next;
-	}
-	return (cont);
+    int     i;
+    
+    i = 0;
+    while (str[i])
+        i++;
+    return (i);
 }

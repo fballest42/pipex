@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_matrixfree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 09:08:29 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/04 11:06:47 by fballest         ###   ########.fr       */
+/*   Created: 2021/11/05 09:45:40 by fballest          #+#    #+#             */
+/*   Updated: 2021/11/05 09:54:18 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void    ft_matrixfree(void **str)
 {
-	t_list		*dev;
-	t_list		*new;
-	t_list		*aux;
-
-	if (!lst || !f)
-		return (NULL);
-	aux = lst;
-	dev = ft_lstnew(f(aux->content));
-	if (!dev)
-		return (NULL);
-	aux = aux->next;
-	while (aux)
-	{
-		new = ft_lstnew(f(aux->content));
-		if (!new)
-		{
-			ft_lstclear(&dev, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&dev, new);
-		aux = aux->next;
-	}
-	return (dev);
+    int     i;
+    
+    i = 0;
+    while (str[i])
+    {
+        free (str[i]);
+        str[i] = (void *)0;
+        i++;
+    }
+    free (str);
+    str = (void *)0;
 }

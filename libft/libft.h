@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 10:14:57 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/31 11:38:29 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/09 23:04:37 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,12 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *),
 				void (*del)(void *));
+void		ft_lsterase(t_list *list);
 int			get_next_line(int fd, char **line);
 long int	ft_atolli(const char *str);
+char		*ft_strchr2(const char *str, char c);
+char		*ft_strtok(const char *str, char c);
+int     	ft_matrixlines(char **str);
+void	    ft_matrixfree(void **str);
 
 #endif

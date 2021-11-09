@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_matrixlines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 13:21:36 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/04 11:07:53 by fballest         ###   ########.fr       */
+/*   Created: 2021/11/05 09:51:41 by fballest          #+#    #+#             */
+/*   Updated: 2021/11/05 09:52:31 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int     ft_matrixlines(void **str)
 {
-	int		i;
-	t_list	*res;
-
-	i = 0;
-	res = lst;
-	while (res)
-	{
-		res = res->next;
-		i++;
-	}
-	return (i);
+    int     i;
+    
+    i = 0;
+    while (str[i])
+        i++;
+    return (i);
 }

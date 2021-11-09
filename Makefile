@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/07/12 10:22:55 by fballest         ###   ########.fr        #
+#    Updated: 2021/11/05 09:43:40 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ INCLUDES = -I$(LIBFT)
 
 # SOURCES #
 
-SRC = 	pipexmain
+SRC = 	pipexmain parser
 
 SRCPIP = $(addsuffix .c, $(SRC))
 OBJS = $(SRCPIP:.c=.o)
