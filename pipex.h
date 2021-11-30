@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 10:01:14 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 12:36:18 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/30 18:55:04 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include <errno.h>
-# include "libft/libft.h"
 
 /*
 **WORKING STRUCTURES
@@ -60,8 +59,32 @@ int			main (int argc, char **argv, char **env);
 /*
 **PARSER.C
 */
-void		ft_printerror(char *str, int error, t_pipex *pipex);
 char		**add_slash_paths(t_pipex *pipex);
 int			add_command_path(t_pipex *pipex);
+char		**take_envs(char **env, t_pipex *pipex);
+void		get_commands(char **argv, t_pipex *pipex);
+
+
+/*
+**UTILS_LIBFT.C
+*/
+void		*ft_calloc(size_t count, size_t size);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*ft_strdup(const char *s1);
+char		*ft_strjoin(char const *s1, char const *s2);
+int			ft_matrixlines(char **str);
+
+/*
+**UTILS_LIBFT_B.C AND 3 STATIC FUNTIONS
+*/
+char		**ft_split(const char *s, char c);
+void		ft_matrixfree(void **str);
+
+/*
+**UTILS_LIBFT_C.C
+*/
+char		*ft_strchr2(const char *str, char c);
+size_t		ft_strlen(const char *str);
+void		ft_bzero(void *str, size_t n);
 
 #endif

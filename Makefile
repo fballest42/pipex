@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/11/05 09:43:40 by fballest         ###   ########.fr        #
+#    Updated: 2021/11/30 19:13:16 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,11 @@
 
 NAME = pipex
 
-# INCLUDES #
-
-INCLUDES = -I$(LIBFT)
-
 # SOURCES #
 
-SRC = 	pipexmain parser
-
+SRC = 	pipexmain parser utils_libft utils_libft_b utils_libft_c
 SRCPIP = $(addsuffix .c, $(SRC))
 OBJS = $(SRCPIP:.c=.o)
-
-LIBFT = libft/libft.a
 
 # COMPILER #
 
@@ -46,8 +39,6 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "$(BLUE)==========CREATING LIBFT==========$(RESET)"
-	@cd libft && make
 	@echo "$(BLUE)==========CREATING PIPEX==========$(RESET)"
 	@$(CC) $(INCLUDES) ${OBJS} $(LIBFT) -o ${NAME}
 	@echo "Done"
@@ -56,14 +47,12 @@ $(NAME): $(OBJS)
 
 clean:
 	@$(RM) $(OBJS)
-	@make -C libft/ clean
-	@$(RM) ${LIBFT}
-	@echo "$(GREEN)==========REMOVED==========$(RESET)"
+	@echo "$(GREEN)==========REMOVING==========$(RESET)"
 	@echo "Success normal cleaning"
 
 fclean: clean
 	@$(RM) ${NAME}
-	@echo "$(GREEN)==========TOTALLY REMOVED==========$(RESET)"
+	@echo "$(GREEN)==========REMOVING ALL==========$(RESET)"
 	@echo "Success deepest cleaning"
 
 re: fclean all

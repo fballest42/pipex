@@ -1,2 +1,2 @@
--e Exit status: 1
+Exit status: 1
 Expected: <126

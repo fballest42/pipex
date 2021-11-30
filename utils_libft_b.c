@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   utils_utils_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/25 09:24:09 by fballest          #+#    #+#             */
-/*   Updated: 2021/03/05 13:05:13 by fballest         ###   ########.fr       */
+/*   Created: 2021/11/05 08:25:12 by fballest          #+#    #+#             */
+/*   Updated: 2021/11/30 18:17:46 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "libft.h"
+# include "pipex.h"
 
 static int	ft_contar(char const *s, char c)
 {
@@ -86,4 +82,19 @@ char	**ft_split(const char *s, char c)
 	}
 	str[i] = 0;
 	return (str);
+}
+
+void    ft_matrixfree(void **str)
+{
+	int     i;
+	
+	i = 0;
+	while (str[i])
+	{
+		free (str[i]);
+		str[i] = (void *)0;
+		i++;
+	}
+	free (str);
+	str = (void *)0;
 }

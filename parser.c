@@ -6,30 +6,11 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 16:07:58 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 13:20:03 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/30 18:50:52 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// void	ft_printerror(char *str, int error, t_pipex *pipex)
-// {
-// 	printf("%s\n", str);
-// 	if (pipex->path)
-// 		ft_matrixfree((void **)pipex->path);
-// 	if (pipex->env)
-// 		ft_matrixfree((void **)pipex->env);
-// 	if (pipex->cmd_1)
-// 		ft_matrixfree((void **)pipex->cmd_1);
-// 	if (pipex->cmd_2)
-// 		ft_matrixfree((void **)pipex->cmd_2);
-// 	if (pipex->expath)
-// 		free (pipex->expath);
-// 	if (pipex->expath2)
-// 		free (pipex->expath2);
-// 	free(pipex);
-// 	exit(error * -1);
-// }
 
 char	**add_slash_paths(t_pipex *pipex)
 {
@@ -59,7 +40,7 @@ int	add_command_path(t_pipex *pipex)
 	i = 0;
 	aux1 = NULL;
 	aux2 = NULL;
-	if (access(pipex->cmd_1[0], X_OK || access(pipex->cmd_2[0], X_OK)))
+	if (access(pipex->cmd_1[0], X_OK) || access(pipex->cmd_2[0], X_OK))
 	{
 		while (pipex->path[i])
 		{
