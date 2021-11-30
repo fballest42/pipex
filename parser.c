@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 16:07:58 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/09 23:06:01 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/18 18:55:39 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,18 @@ void	add_command_path(t_pipex *pipex)
 			pipex->expath2 = aux2;
 		i++;
 	}
-	if (!pipex->expath || !pipex->expath2)
-		ft_printerror("Error:\n", 9, pipex);
+	if (!pipex->expath)
+	{
+		printf("pipex: %s: command not found", pipex->expath); 
+		perror(" ");
+		exit (5);
+	}
+	else if (!pipex->expath2)
+	{
+		printf("pipex: %s: command not found", pipex->expath2);
+		perror(" ");
+		exit (5);
+	}
 }
 
 char	**take_envs(char **env, t_pipex *pipex)

@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 09:58:43 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/09 23:10:42 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/18 19:04:06 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void	open_files(char **argv, t_pipex *pipex)
 {
-	if (!access(argv[1], R_OK))
+	pipex->file_in = argv[1];
+	pipex->file_out = argv[4];
+	pipex->fd_in = open(pipex->file_in, O_RDONLY);
+	if (pipex->file_in <= 0)
 	{
-		pipex->fd_in = open(argv[1], O_RDONLY);
-		pipex->file_in = argv[1];
-		pipex->fd_out = open(argv[4], O_RDWR | O_CREAT, S_IRWXU | O_APPEND);
-		if (pipex->fd_out >= 0)
-			pipex->file_out = argv[4];
-		else
-			ft_printerror("Error:\n", 10, pipex);
+		perror(("pipex: "));
+		exit (errno);
 	}
-	else
-		ft_printerror("Error: Not valid files.\n", 3, pipex);
+	pipex->fd_out = open(pipex->file_out, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (pipex->fd_out <= 0)
+	{
+		perror(("pipex: "));
+		exit (errno);
+	}
 }
 
 void	execute_fork2(int *fd, t_pipex *pipex)
@@ -33,14 +35,21 @@ void	execute_fork2(int *fd, t_pipex *pipex)
 	pipex->ph = fork();
 	if (pipex->ph == 0)
 	{
+		close(fd[1]);
 		dup2(fd[0], 0);
 		dup2(pipex->fd_out, 1);
-		close(pipex->fd_out);
-		execve(pipex->expath2, pipex->cmd_2, pipex->env);
-		perror("Error:");
+		close(pipex->fd_in);
+		if (execve(pipex->expath2, pipex->cmd_2, pipex->env))
+		{
+			perror("pipex: ");
+			exit (errno);
+		}
 	}
 	else if (pipex->ph < 0)
-		ft_printerror("Error:\n", 8, pipex);
+	{
+		perror("pipex: ");
+		exit (errno);
+	}
 }
 
 void	execute_fork(t_pipex *pipex)
@@ -49,20 +58,31 @@ void	execute_fork(t_pipex *pipex)
 	int		status;
 
 	if (pipe(fd) < 0)
-		ft_printerror("Error:\n", 6, pipex);
+	{
+		perror("pipex: ");
+		exit (errno);
+	}
 	pipex->ph = fork();
 	if (pipex->ph < 0)
-		ft_printerror("Error:\n", 7, pipex);
-	else if (pipex->ph == 0)
 	{
+		perror("pipex: ");
+		exit (errno);
+	}
+	if (pipex->ph == 0)
+	{
+		close(fd[0]);
 		dup2(pipex->fd_in, 0);
 		dup2(fd[1], 1);
-		close(pipex->fd_in);
-		execve(pipex->path[pipex->y], pipex->cmd_1, pipex->env);
-		perror("Error:");
+		close(fd[1]);
+		if (execve(pipex->expath, pipex->cmd_1, pipex->env))
+		{
+			perror("pipex2: ");
+			exit (errno);
+		}
 	}
-	else
-		execute_fork2(fd, pipex);
+	execute_fork2(fd, pipex);
+	close(fd[0]);
+	close(fd[1]);
 	wait(&status);
 	wait(&status);
 }
@@ -77,8 +97,10 @@ int	main (int argc, char **argv, char **env)
 	pipex = ft_calloc(sizeof(t_pipex), 1);
 	take_envs(env, pipex);
 	if (!pipex || !pipex->env || argc < 5)
-		ft_printerror("Error:\n", 1, pipex);
-
+	{
+		perror("pipex");
+		return (errno);
+	}
 	open_files(argv, pipex);
 	pipex->path = add_slash_paths(pipex);
 	get_commands(argv, pipex);
@@ -86,7 +108,10 @@ int	main (int argc, char **argv, char **env)
 	execute_fork(pipex);
 	}
 	else
-		ft_printerror("Error:\n", 2, pipex);
+	{
+		perror("pipex");
+		return (1);
+	}
 	return (0);
 }
 

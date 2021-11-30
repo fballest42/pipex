@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/pipex",
-            "args": ["utils.c", "ls -l", "wc -l", "a.txt"],
+            "args": ["assets/deepthought.txt", "cat", "notexisting", "outs/test-xx.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
