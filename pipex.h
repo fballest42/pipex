@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 10:01:14 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/05 11:05:27 by fballest         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:36:18 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int			main (int argc, char **argv, char **env);
 */
 void		ft_printerror(char *str, int error, t_pipex *pipex);
 char		**add_slash_paths(t_pipex *pipex);
-void		add_command_path(t_pipex *pipex);
+int			add_command_path(t_pipex *pipex);
 
 #endif

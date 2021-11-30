@@ -9,12 +9,17 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/pipex",
-            "args": ["assets/deepthought.txt", "cat", "notexisting", "outs/test-xx.txt"],
+            "args": ["imput.txt", "cat", "notexisting", "output.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
+
             "environment": [],
             "externalConsole": false,
-            "MIMode": "lldb"
+            "MIMode": "lldb",
+            "osx": {
+                "MIMode": "lldb",
+                "environment": [{"name": "DYLD_LIBRATY_PATH", "value": "/Users/x/boost_1_63_0/stage/lib/"}]
+            },
         }
     ]
 }
