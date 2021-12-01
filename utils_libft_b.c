@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_utils_b.c                                    :+:      :+:    :+:   */
+/*   utils_libft_b.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 08:25:12 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 18:17:46 by fballest         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:09:51 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipex.h"
+#include "pipex.h"
 
 static int	ft_contar(char const *s, char c)
 {
@@ -84,17 +84,16 @@ char	**ft_split(const char *s, char c)
 	return (str);
 }
 
-void    ft_matrixfree(void **str)
+void	ft_matrixfree(char **str)
 {
-	int     i;
-	
+	int		i;
+
 	i = 0;
 	while (str[i])
 	{
 		free (str[i]);
-		str[i] = (void *)0;
 		i++;
 	}
 	free (str);
-	str = (void *)0;
+	str = NULL;
 }

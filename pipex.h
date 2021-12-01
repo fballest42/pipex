@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 10:01:14 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 18:55:04 by fballest         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:47:59 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ typedef struct s_pipex
 **FILES AND FUNTIONS
 */
 /*
-**PIPEXMAIN
+**PIPEXMAIN.C
 */
-char		**take_envs(char **env, t_pipex *pipex);
-void		get_commands(char **argv, t_pipex *pipex);
-void		check_path(t_pipex *pipex);
 void		open_files(char **argv, t_pipex *pipex);
-int			main (int argc, char **argv, char **env);
+void		execute_fork2(int *fd, t_pipex *pipex);
+void		init_pipe(t_pipex *pipex, int *fd);
+void		execute_fork(t_pipex *pipex);
+int			main(int argc, char **argv, char **env);
 
 /*
 **PARSER.C
 */
 char		**add_slash_paths(t_pipex *pipex);
-int			add_command_path(t_pipex *pipex);
+void		add_command_bucle(t_pipex *pipex, int *i);
+void		add_command_path(t_pipex *pipex);
 char		**take_envs(char **env, t_pipex *pipex);
 void		get_commands(char **argv, t_pipex *pipex);
-
 
 /*
 **UTILS_LIBFT.C
@@ -78,7 +78,7 @@ int			ft_matrixlines(char **str);
 **UTILS_LIBFT_B.C AND 3 STATIC FUNTIONS
 */
 char		**ft_split(const char *s, char c);
-void		ft_matrixfree(void **str);
+void		ft_matrixfree(char **str);
 
 /*
 **UTILS_LIBFT_C.C
@@ -86,5 +86,6 @@ void		ft_matrixfree(void **str);
 char		*ft_strchr2(const char *str, char c);
 size_t		ft_strlen(const char *str);
 void		ft_bzero(void *str, size_t n);
+void		freememory(t_pipex *pipex);
 
 #endif

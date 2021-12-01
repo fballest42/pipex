@@ -6,11 +6,11 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 08:25:12 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 18:12:26 by fballest         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:48:03 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipex.h"
+#include "pipex.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -94,12 +94,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dst);
 }
 
-int     ft_matrixlines(char **str)
+int	ft_matrixlines(char **str)
 {
-    int     i;
-    
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

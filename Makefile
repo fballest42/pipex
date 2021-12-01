@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/11/30 19:13:16 by fballest         ###   ########.fr        #
+#    Updated: 2021/12/01 14:59:40 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJS = $(SRCPIP:.c=.o)
 
 # COMPILER #
 
-CC = gcc -Wall -Wextra -Werror -g
+CC = gcc -Wall -Wextra -Werror -g#3 -fsanitize=address
 
 # COLOUR DEFINITION #
 

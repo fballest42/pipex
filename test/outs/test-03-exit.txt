@@ -1,2 +1,2 @@
-Exit status: 1
+-e Exit status: 1
 Expected: 1

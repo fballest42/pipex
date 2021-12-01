@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 09:58:43 by fballest          #+#    #+#             */
-/*   Updated: 2021/12/01 00:09:05 by fballest         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:53:10 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	open_files(char **argv, t_pipex *pipex)
 {
-	pipex->file_in = argv[1];
-	pipex->file_out = argv[4];
+	pipex->file_in = ft_strdup(argv[1]);
+	pipex->file_out = ft_strdup(argv[4]);
 	pipex->fd_in = open(pipex->file_in, O_RDONLY);
 	if (pipex->fd_in <= 0)
 	{
@@ -59,10 +59,8 @@ void	execute_fork2(int *fd, t_pipex *pipex)
 	wait(&status);
 }
 
-void	execute_fork(t_pipex *pipex)
+void	init_pipe(t_pipex *pipex, int *fd)
 {
-	int		fd[2];
-
 	if (pipe(fd) < 0)
 	{
 		perror("pipex");
@@ -74,6 +72,13 @@ void	execute_fork(t_pipex *pipex)
 		perror("pipex");
 		exit (errno);
 	}
+}
+
+void	execute_fork(t_pipex *pipex)
+{
+	int		fd[2];
+
+	init_pipe(pipex, fd);
 	if (pipex->ph == 0)
 	{
 		close(fd[0]);
@@ -89,7 +94,7 @@ void	execute_fork(t_pipex *pipex)
 	execute_fork2(fd, pipex);
 }
 
-int	main (int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	t_pipex		*pipex;
 
@@ -114,5 +119,6 @@ int	main (int argc, char **argv, char **env)
 		perror("pipex");
 		return (1);
 	}
+	freememory(pipex);
 	return (0);
 }

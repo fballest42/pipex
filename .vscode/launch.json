@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/pipex",
-            "args": ["imput.txt", "cat", "notexisting", "output.txt"],
+            "args": ["infile", "cat -e", "wc -l", "output.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
 

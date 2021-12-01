@@ -6,11 +6,11 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 08:25:12 by fballest          #+#    #+#             */
-/*   Updated: 2021/11/30 19:18:12 by fballest         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:48:32 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipex.h"
+#include "pipex.h"
 
 char	*ft_strchr2(const char *str, char c)
 {
@@ -55,4 +55,25 @@ void	ft_bzero(void *str, size_t n)
 		c++;
 		i++;
 	}
+}
+
+void	freememory(t_pipex *pipex)
+{
+	if (pipex->env)
+		ft_matrixfree(pipex->env);
+	if (pipex->path)
+		ft_matrixfree(pipex->path);
+	if (pipex->cmd_1)
+		ft_matrixfree(pipex->cmd_1);
+	if (pipex->cmd_2)
+		ft_matrixfree(pipex->cmd_2);
+	if (pipex->expath)
+		free (pipex->expath);
+	if (pipex->expath2)
+		free (pipex->expath2);
+	if (pipex->file_in)
+		free(pipex->file_in);
+	if (pipex->file_out)
+		free (pipex->file_out);
+	return ;
 }
