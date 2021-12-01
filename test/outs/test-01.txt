@@ -1,9 +1,0 @@
-gcc -Wall -Wextra -Werror -g    -c -o pipexmain.o pipexmain.c
-gcc -Wall -Wextra -Werror -g    -c -o parser.o parser.c
-gcc -Wall -Wextra -Werror -g    -c -o utils_libft.o utils_libft.c
-gcc -Wall -Wextra -Werror -g    -c -o utils_libft_b.o utils_libft_b.c
-gcc -Wall -Wextra -Werror -g    -c -o utils_libft_c.o utils_libft_c.c
-[0;34m==========CREATING PIPEX==========[0m
-Done
-[1;32m==========WELLDONE==========[0m
-Success creating pipex file

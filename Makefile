@@ -6,38 +6,32 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/12/01 14:59:40 by fballest         ###   ########.fr        #
+#    Updated: 2021/12/01 15:56:24 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .DELETE_ON_ERROR:
 
 # FILE NAME #
-
 NAME = pipex
 
 # SOURCES #
-
 SRC = 	pipexmain parser utils_libft utils_libft_b utils_libft_c
 SRCPIP = $(addsuffix .c, $(SRC))
 OBJS = $(SRCPIP:.c=.o)
 
 # COMPILER #
-
 CC = gcc -Wall -Wextra -Werror -g#3 -fsanitize=address
 
 # COLOUR DEFINITION #
-
 BLUE = \033[0;34m
 GREEN = \033[1;32m
 RESET = \033[0m
 
 # CLEANING INSTRUCTION #
-
 RM = rm -rf
 
 all: $(NAME)
-
 $(NAME): $(OBJS)
 	@echo "$(BLUE)==========CREATING PIPEX==========$(RESET)"
 	@$(CC) $(INCLUDES) ${OBJS} $(LIBFT) -o ${NAME}
